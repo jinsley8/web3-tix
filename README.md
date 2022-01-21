@@ -1,6 +1,6 @@
 # Web3 Tix
 
-Testing out deploying a smart contracts for tickets.
+Testing out deploying a smart contracts to create tickets for people to buy with ETH.
 
 
 ## Installation
