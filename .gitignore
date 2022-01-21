@@ -1,6 +1,8 @@
 node_modules
 build
 app/src/contracts
+client/.parcel-cache
+client/dist
 
 deploy_mnemonic.key
 .env
