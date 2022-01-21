@@ -1,0 +1,8 @@
+node_modules
+build
+app/src/contracts
+
+deploy_mnemonic.key
+.env
+.DS_Store
+*.log
