@@ -34,10 +34,6 @@ Testing out deploying a smart contracts to create tickets for people to buy with
 
 ## FAQ
 
-* __Where is my production build?__
-
-    The production build will be in the `app/build` folder after running `npm run build` in the `app` folder.
-
 * __Where can I find more documentation?__
 
     Start by reading the [Truffle](http://truffleframework.com/) documentation.
