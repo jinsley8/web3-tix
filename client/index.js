@@ -26,11 +26,18 @@ let account;
 const accountEl = document.getElementById('account');
 const ticketsEl = document.getElementById('tickets');
 
+const buyTicket = async (ticket) => {
+  await contract.methods.buyTicket(ticket.id).send({
+    from: account,
+    value: ticket.price,
+  });
+  await refreshTickets();
+}
+
 const refreshTickets = async () => {
   ticketsEl.innerHTML = '';
   for (let i = 0; i < TOTAL_TICKETS; i++) {
     const ticket = await contract.methods.tickets(i).call();
-    console.log(ticket);
     ticket.id = i;
 
     if (ticket.owner === EMPTY_ADDRESS) {
@@ -41,12 +48,18 @@ const refreshTickets = async () => {
               <img style="width:100%; height: auto;" src=${ticketImg} alt="Ticket image">
             </div>
             <div class="card-body">
-              <h5 class="card-title">${ticket.price/1e18} ETH</h5>
+              <div class="d-flex justify-content-between mb-3">
+                <h5 class="card-title mb-0">${ticket.price/1e18} ETH</h5>
+                <span class="badge badge-dark" style="background-color: #343a40;">#${ticket.id + 1}</span>
+              </div>
               <button class="btn btn-primary">Buy</button>
             </div>
           </div>
         </div>
       `);
+      const button = ticketEl.querySelector('button');
+
+      button.onclick = buyTicket.bind(null, ticket);
       ticketsEl.appendChild(ticketEl);
     }
   }
